@@ -1,0 +1,49 @@
+function QuickSort(data, min, max){
+    if(data && data.length > 0){
+        var temp = 0, line = min, i = min, j = max;
+        var val = data[line];
+        while(i !== j && i < j) {
+            if(data[i] < val)
+            {
+                if(i < j){
+                    i++;
+                }
+                else{
+                    break;
+                }
+            }
+
+            if(data[j] > val){
+                if(j > i){
+                    j--;
+                }
+                else{
+                    break;
+                }
+            }
+
+            if (i != j && data[i] >= val && data[j] <= val) {
+                temp = data[i];
+                data[i] = data[j];
+                data[j] = temp;
+            }
+        }
+
+
+        if(min < i-1){
+            QuickSort(data, min, i-1);
+        }
+
+        if(max > i+1){
+            QuickSort(data, i+1,max);
+        }
+    }
+}
+
+var arry = [6,8,3,1,2,5,9,4,7,0];
+//var arry = [2,1];
+
+
+QuickSort(arry,0, arry.length-1);
+
+console.log(arry);
